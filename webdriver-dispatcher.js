@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var express = require('express');
 var webdriverRouter = require('./routers/webdriver-router');
 var app = express();
@@ -13,4 +15,3 @@ app.use('/session', webdriverRouter);
 app.listen(5555, () => {
     console.log('started');
 });
-
