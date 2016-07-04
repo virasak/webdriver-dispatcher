@@ -1,3 +1,9 @@
 # webdriver-dispatcher
 
-chromedriver --port=4444 && node webdriver-dispatcher.js
+## Install:
+
+    npm install webdriver-dispatcher
+
+## Usage:
+
+    webdriver-dispatcher
