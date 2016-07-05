@@ -13,7 +13,7 @@ The driver should access at http://localhost:4444.
 
 ## How it works:
 
-Webdriver dispatcher is remote webdriver by itself. It can serve
+Webdriver dispatcher is remote webdriver proxy. It can serve
 selenium client as usual. You can run multiple machine with one
 webdriver dispatcher and one remote webdriver and use HA proxy
 in front of these machine. When request from client go to webdriver
