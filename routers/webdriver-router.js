@@ -21,7 +21,18 @@ var hostname = os.hostname();
 
 driverProcess.start();
 
-router.post('/', (req, res) => !req.query.restart || driverProcess.restart());
+router.post('/', (req, res) => {
+    if (req.query.restart) {
+        try {
+            driverProcess.restart()
+            res.json({ status: 'OK'});
+        } catch (e) {
+            res.status(500).json({ status: 'ERROR', message: e.message});
+        }
+    } else {
+        res.status(404).end();
+    }
+});
 
 /*
  * Handle session creation
