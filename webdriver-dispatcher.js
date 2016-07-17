@@ -3,7 +3,7 @@
 var express = require('express');
 var webdriverRouter = require('./routers/webdriver-router');
 var requestLogger = require('./middlewares/request-logger');
-var config = require('./config.json');
+var config = require('./config');
 
 var app = express();
 var port = config.dispatcher.port;

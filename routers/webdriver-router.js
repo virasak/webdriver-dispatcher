@@ -10,7 +10,7 @@ var util    = require('util');
 var os      = require('os');
 
 var driverProcess = require('../lib/webdriver-process');
-var config        = require('../config.json');
+var config        = require('../config');
 
 
 
@@ -52,16 +52,17 @@ router.post('/session', (req, res) => {
 });
 
 // delete session
-router.route('/session/:sessionId')
+router.route('/session/:target-:sessionId')
     // get session status
     .get((req, res)  => request.get(req.webDriverUrl).pipe(res))
     // delete session
     .delete((req, res) => request.delete(req.webDriverUrl).pipe(res))
 
-router.route('/session/:sessionId/*')
+router.route('/session/:target-:sessionId/*')
     .get((req, res)  => request.get(req.webDriverUrl).pipe(res))
     .delete((req, res) => request.delete(req.webDriverUrl).pipe(res))
     .post((req, res) => req.pipe(request.post(req.webDriverUrl)).pipe(res));
+
 
 router.param('sessionId', (req, res, next, sessionId) => {
     var parts = sessionId.split('-');
