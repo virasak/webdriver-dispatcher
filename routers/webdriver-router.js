@@ -21,6 +21,8 @@ var hostname = os.hostname();
 
 driverProcess.start();
 
+router.post('/', (req, res) => !req.query.restart || driverProcess.restart());
+
 /*
  * Handle session creation
  */
