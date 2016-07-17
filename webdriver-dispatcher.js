@@ -2,16 +2,20 @@
 
 var express = require('express');
 var webdriverRouter = require('./routers/webdriver-router');
+var requestLogger = require('./middlewares/request-logger');
+var config = require('./config.json');
+
 var app = express();
+var port = config.dispatcher.port;
+
+
 
 // log request method and url
-app.use((req, res, next) => {
-    console.log(req.method + ' ' + req.url);
-    next();
+app.use(requestLogger());
+
+app.use(webdriverRouter);
+
+app.listen(port, () => {
+    console.log('started on port: ' + port);
 });
 
-app.use('/session', webdriverRouter);
-
-app.listen(5555, () => {
-    console.log('started');
-});

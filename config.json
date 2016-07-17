@@ -1,0 +1,9 @@
+{
+    "dispatcher": {
+        "port": 5555
+    },
+    "chromeDriver" : {
+        "path": "C:/Users/vdungsrikaew/bin/chromedriver.exe",
+        "port": 4444
+    }
+}

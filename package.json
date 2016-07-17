@@ -8,10 +8,15 @@
   "scripts": {
     "start": "node webdriver-dispatcher.js"
   },
-  "keywords": ["remote-webdriver"],
+  "keywords": [
+    "remote-webdriver"
+  ],
   "author": "Virasak Dunsrikaew",
   "dependencies": {
     "express": "^4.14.0",
     "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "selenium-webdriver": "^2.53.3"
   }
 }
