@@ -1,6 +1,6 @@
 {
   "name": "webdriver-dispatcher",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Remote WebDriver Dispatcher",
   "bin": {
     "webdriver-dispatcher": "webdriver-dispatcher.js"
