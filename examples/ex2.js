@@ -10,7 +10,7 @@ if (cluster.isMaster) {
 } else {
     var driver = new webdriver.Builder()
         .forBrowser('chrome')
-        .usingServer('http://localhost:5555')
+        .usingServer('http://localhost:5555/webdriver')
         .build();
 
     driver.get('http://www.google.com/ncr');
