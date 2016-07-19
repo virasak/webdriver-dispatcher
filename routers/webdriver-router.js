@@ -18,7 +18,7 @@ module.exports = (config) => {
     router.param('sessionId', (req, res, next, sessionId) => {
         var parts = sessionId.split('-');
         req.webDriverUrl = parts[0] === hostname ? localWebDriverUrl + req.url.replace(sessionId, parts[1])
-                                                 : util.format(remoteWebDriverUrl, hostname) +  req.originalUrl;
+                                                 : util.format(remoteWebDriverUrl, parts[0]) +  req.originalUrl;
 
         console.log('webDriverUrl', req.webDriverUrl);
 
