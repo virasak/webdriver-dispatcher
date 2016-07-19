@@ -15,6 +15,17 @@ module.exports = (config) => {
     var remoteWebDriverUrl = 'http://%s:' + config.dispatcher.port;
     var hostname = os.hostname();
 
+    router.param('sessionId', (req, res, next, sessionId) => {
+        var parts = sessionId.split('-');
+        req.webDriverUrl = parts[0] === hostname ? localWebDriverUrl + req.url.replace(sessionId, parts[1])
+                                                 : util.format(remoteWebDriverUrl, hostname) +  req.originalUrl;
+
+        console.log('webDriverUrl', req.webDriverUrl);
+
+        next();
+    });
+
+
     /*
      * Handle session creation
      */
@@ -44,14 +55,6 @@ module.exports = (config) => {
         .delete((req, res) => request.delete(req.webDriverUrl).pipe(res))
         .post((req, res) => req.pipe(request.post(req.webDriverUrl)).pipe(res));
 
-
-    router.param('sessionId', (req, res, next, sessionId) => {
-        var parts = sessionId.split('-');
-        req.webDriverUrl = parts[0] === hostname ? localWebDriverUrl + req.url.replace(sessionId, parts[1])
-                                                 : util.format(remoteWebDriverUrl, hostname, req.url);
-
-        next();
-    });
 
     return router;
 
