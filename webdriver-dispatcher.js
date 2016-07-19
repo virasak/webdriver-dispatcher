@@ -3,7 +3,7 @@
 var express = require('express');
 var webdriverRouter = require('./routers/webdriver-router');
 var requestLogger = require('./middlewares/request-logger');
-var chromeRouter = require('./routers/chrome-router');
+//var chromeRouter = require('./routers/chrome-router');
 var config = require('./config');
 
 var app = express();
@@ -17,7 +17,7 @@ app.use(requestLogger());
 // selenium webdriver proxy
 app.use('/webdriver', webdriverRouter(config));
 
-app.use('/local-webdriver', chromeRouter(config.chromeDriver));
+//app.use('/local-webdriver', chromeRouter(config.chromeDriver));
 
 app.all('*', (req, res) => res.sendStatus(404));
 
